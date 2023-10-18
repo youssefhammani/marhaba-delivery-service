@@ -1,0 +1,39 @@
+{
+  "name": "marhaba-delivery-service",
+  "version": "1.0.0",
+  "description": "Delivery application for Marhaba Restaurant with JWT authentication",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youssefhammani/marhaba-delivery-service.git"
+  },
+  "keywords": [
+    "delivery",
+    "expressjs",
+    "JWT",
+    "MongoDB"
+  ],
+  "author": "YOUSSEF HAMMANI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youssefhammani/marhaba-delivery-service/issues"
+  },
+  "homepage": "https://github.com/youssefhammani/marhaba-delivery-service#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.6.2"
+  }
+}
