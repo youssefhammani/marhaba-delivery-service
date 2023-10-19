@@ -1,8 +1,10 @@
-const express = require('express');
+const bcryptjs = require('bcryptjs');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
 const cors = require('cors');
-const dbMiddleware = require('/database');
+const dotenv = require('dotenv');
+const express = require('express');
+const jwt = require('jsonwebtoken');
+const dbMiddleware = require('../database');
 
 const app = express();
 dotenv.config();
@@ -13,8 +15,8 @@ app.use(cors());
 app.use(dbMiddleware);
 
 // Routes and other app configuration
-const authRoutes = require('/src/routes/authRoutes');
-const userRoutes = require('/src/routes/userRoutes');
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);

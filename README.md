@@ -10,7 +10,8 @@ license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/
 
 ## Description
 
-Welcome to the backend repository of the "*Marhaba Delivery App,*" project, focusing on (JSON Web Token) JWT authentication and built with
+Welcome to the backend repository of the "*Marhaba Delivery App,*" project, focusing on (JSON Web Token) JWT
+authentication and built with
 ExpressJS. This project aims to develop a comprehensive Single Page Application (SPA) with Client Side Rendering (CSR)
 for the Marhaba restaurant's home delivery service. The application includes features for both restaurant managers,
 clients, and delivery personnel.
@@ -26,6 +27,7 @@ clients, and delivery personnel.
 - [Contact](#contact)
 
 ## Key Features
+
 - JWT Authentication: Ensures secure access and data protection.
 - Comprehensive Role Management: Tailored user roles for different stakeholders.
 - Single Page Application: Enhances performance and provides a seamless user experience.
@@ -112,10 +114,75 @@ To set up and run this project locally, follow these steps:
 
    ```bash
    git clone https://github.com/youssefhammani/marhaba-delivery-service.git
+   ```
+
+2. **Navigate to the project directory:**
+
+   ```bash
+   cd your-repo-name
+   ```
+
+3. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+4. **Set up environment variables:**
+
+   - Create a `.env` file in the root of the project and add the required environment variables.
+   - Fill it with necessary credentials for database connection, mail server configuration, etc.
+   - For example:
+
+      ```env
+      PORT=3000
+      MONGODB_URI=mongodb://localhost:27017/your-database-name
+      JWT_SECRET=your-secret-key
+      ```
+   
+   - Make sure to replace the values with your specific configuration.
+
+5. **Start the development server:**
+
+   ```bash
+   npm start
+   ```
+
+6. **Open Postman For Professional API Testing:**
+
+   - Utilize [Postman](https://www.postman.com/) or a similar tool for professional API testing and interaction with the documented endpoints. [Click here](api-docs.md) to access the documentation.
+
+## Testing
+
+- The app uses Jest as its testing framework. To run tests, simply type: 
+
+   ```bash
+   npm test
+   ```
 
 ## Usage
 
-Explain how to use your project and include examples if applicable.
+- To use this project and its API, follow these steps:
+
+1. **User Registration:**
+
+   - Clients can register directly via the application. Use the api/auth/register route to register with your details.
+
+2. **User Authentication:***
+
+   - Log in using the api/auth/login route with your registered email and password to obtain a JWT token.
+
+3. **API Routes:**
+
+   - Access the various API routes for creating orders, managing user roles, and other functionalities as described in the project's documentation.
+
+4. **Testing:**
+
+   - For testing purposes, you can use the provided test cases for user registration and authentication to ensure the application's robustness.
+
+* Please refer to the project's documentation for detailed information on how to use each API route and feature.
+
+> For any questions or issues, don't hesitate to reach out to the project maintainers. You can click [here](mailto:yhammani.student@gmail.com) to contact me through Gmail.
 
 ## Contributing
 

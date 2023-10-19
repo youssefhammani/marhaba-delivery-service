@@ -2,7 +2,7 @@
   "name": "marhaba-delivery-service",
   "version": "1.0.0",
   "description": "Delivery application for Marhaba Restaurant with JWT authentication",
-  "main": "app.js",
+  "main": "server.js",
   "directories": {
     "test": "tests"
   },
@@ -29,11 +29,13 @@
     "nodemon": "^3.0.1"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^7.6.2"
+    "mongoose": "^7.6.2",
+    "nodemailer": "^6.9.6"
   }
 }

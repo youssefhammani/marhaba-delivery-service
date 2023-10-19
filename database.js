@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
-const config = require('./config');
+const config = require('./config/config');
 
 const uri = config.database.url;
 
 mongoose.connect(uri, {
+    dbName: "marhaba-delivery-service",
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

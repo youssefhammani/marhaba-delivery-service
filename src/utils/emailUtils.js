@@ -1,11 +1,30 @@
 const nodemailer = require('nodemailer');
+const config = require('../../config/config');
+
+// const transporter = nodemailer.createTransport({
+//     service: 'YourEmailService',
+//     auth: {
+//         user: process.env.EMAIL_USER,
+//         pass: process.env.EMAIL_PASS,
+//     },
+// });
+
+// const transporter = nodemailer.createTransport({
+//     host: 'smtp.ethereal.email',
+//     port: 587,
+//     auth: {
+//         user: process.env.EMAIL_USER,
+//         pass: process.env.EMAIL_PASS,
+//     }
+// });
 
 const transporter = nodemailer.createTransport({
-    service: 'YourEmailService',
+    host: config.nodemailer.host,
+    port: config.nodemailer.port,
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
+        user: config.nodemailer.user,
+        pass: config.nodemailer.pass,
+    }
 });
 
 const sendConfirmationEmail = (userEmail, token) => {
