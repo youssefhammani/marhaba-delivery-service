@@ -3,6 +3,7 @@ const config = require('../config/config');
 // const http = require('http');
 
 const PORT = config.server.port;
+// const PORT = 3001;
 // const server = http.createServer(app);
 
 const server = app.listen(PORT, () => {

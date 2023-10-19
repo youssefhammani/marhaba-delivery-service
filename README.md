@@ -22,6 +22,7 @@ clients, and delivery personnel.
 - [API Documentation](#api-documentation)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Scripts](#scripts)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -104,7 +105,7 @@ should return an appropriate error.
 
 ## API Documentation
 
-For detailed information on the API endpoints and how to use them, please refer to our [API Documentation](api-docs.md).
+For detailed information on the API endpoints and how to use them, please refer to our [API Documentation](documents/api-docs.md).
 
 ## Installation
 
@@ -150,7 +151,7 @@ To set up and run this project locally, follow these steps:
 
 6. **Open Postman For Professional API Testing:**
 
-   - Utilize [Postman](https://www.postman.com/) or a similar tool for professional API testing and interaction with the documented endpoints. [Click here](api-docs.md) to access the documentation.
+   - Utilize [Postman](https://www.postman.com/) or a similar tool for professional API testing and interaction with the documented endpoints. [Click here](documents/api-docs.md) to access the documentation.
 
 ## Testing
 
@@ -184,13 +185,17 @@ To set up and run this project locally, follow these steps:
 
 > For any questions or issues, don't hesitate to reach out to the project maintainers. You can click [here](mailto:yhammani.student@gmail.com) to contact me through Gmail.
 
+## Scripts
+
+For detailed information on the scripts and how to use them, please refer to the [SCRIPT Documentation](documents/Script_Guide.md).
+
 ## Contributing
 
-Please follow the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md) to contribute to this project.
+Please follow the guidelines in [CONTRIBUTING.md](documents/CONTRIBUTING.md) to contribute to this project.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](documents/LICENSE) file for details.
 
 ## Contact
 

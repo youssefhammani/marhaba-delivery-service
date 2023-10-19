@@ -4,7 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const dbMiddleware = require('../database');
+const dbMiddleware = require('../src/middleware/dbMiddleware');
 
 const app = express();
 dotenv.config();
@@ -23,4 +23,4 @@ app.use('/api/users', userRoutes);
 
 
 
-module.exports = setupApp;
+module.exports = app;

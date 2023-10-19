@@ -19,15 +19,16 @@ const userSchema = new mongoose.Schema({
     },
     fullName: {
         type: String,
-        required: true,
+        required: false,
     },
     dateOfBirth: {
         type: Date,
-        required: true,
     },
     role: {
-        type: String,
-        enum: ['Manager', 'Client', 'manager', 'client', 'livreur'],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Role',// Reference to the Role model
+        required: true,
+        // enum: ['Manager', 'Client', 'manager', 'client', 'livreur'],
         // default: 'Client',
     },
     createdAt: {

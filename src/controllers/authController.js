@@ -1,8 +1,12 @@
+const express = require('express');
 const User = require('../models/userModel');
-const bcryptjs = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('../../config/config');
 const { sendConfirmationEmail } = require('../utils/emailUtils');
+
+const app = express();
+app.use(express.json());
 
 const register = async (req, res) => {
     try {
@@ -14,7 +18,7 @@ const register = async (req, res) => {
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        const hashedPassword = await bcryptjs.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         const newUser = new User({
             username,
@@ -50,7 +54,7 @@ const login = async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        const passwordMatch = await bcryptjs.compare(password, user.password);
+        const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (!passwordMatch) {
             return res.status(401).json({ message: 'Invalid credentials' });

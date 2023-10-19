@@ -1,4 +1,4 @@
-const { db } = require('./database');
+const { db } = require('../../database');
 
 function injectDatabase(req, res, next) {
   req.db = db;
