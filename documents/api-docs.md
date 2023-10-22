@@ -23,9 +23,6 @@ This API requires user authentication via JSON Web Tokens (JWT). To access prote
 | GET    | `/api/user/:role/me`             | Get the authenticated user's profile based on their role                 | - User profile information                                                                                                     | User profile information                                                               | ***Private (Role-Based)*** |
 | POST   | `/api/auth/logout`               | Log out the current authenticated user                                   | - None                                                                                                                         | Logout confirmation message                                                            | ***Private***              |
 
----
----
-
 #### ***Users :***
 
 | Method | Endpoint                     | Description                       | Request Body           | Response                         | Access Control |
@@ -37,9 +34,6 @@ This API requires user authentication via JSON Web Tokens (JWT). To access prote
 | DELETE | `/api/user/:id/delete`       | Delete account                    | - None                 | - Deletion confirmation message  | ***Private***  |
 | PATCH  | `/api/user/:id/assign_role`  | Assign role to an existing user   | - Role details         | - Updated user profile with role | ***Admin***    |
 | PATCH  | `/api/user/:id/revoke_role`  | Revoke role from an existing user | - None                 | - Updated user profile           | ***Admin***    |
-
----
----
 
 #### ***Roles :***
 
@@ -60,7 +54,7 @@ This API requires user authentication via JSON Web Tokens (JWT). To access prote
 | POST   | /api/orders                  | Place a new order                     | Customer       |
 | PATCH  | /api/orders/:orderId/cancel  | Cancel an active order                | Customer       |
 | PATCH  | /api/orders/:orderId/deliver | Mark an order as delivered            | Driver         |
-| PATCH  | /api/orders/:orderId/pickup  | Pick up and mark an order as on route | Driver         | --> |
+| PATCH  | /api/orders/:orderId/pickup  | Pick up and mark an order as on route | Driver         | --> 
 
 ## Error Handling
 
