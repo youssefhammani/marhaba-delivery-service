@@ -19,10 +19,11 @@ clients, and delivery personnel.
 ## Table of Contents
 
 - [Key Features](#key-features)
-- [API Documentation](#api-documentation)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Scripts](#scripts)
+- [Testing](#testing)
+- [API Documentation](#api-documentation)
+- [Script Documentation](#script-documentation)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -103,10 +104,6 @@ should return an appropriate error.
 - Nodemon
 - Jest or Mocha (for testing)
 
-## API Documentation
-
-For detailed information on the API endpoints and how to use them, please refer to our [API Documentation](documents/api-docs.md).
-
 ## Installation
 
 To set up and run this project locally, follow these steps:
@@ -153,14 +150,6 @@ To set up and run this project locally, follow these steps:
 
    - Utilize [Postman](https://www.postman.com/) or a similar tool for professional API testing and interaction with the documented endpoints. [Click here](documents/api-docs.md) to access the documentation.
 
-## Testing
-
-- The app uses Jest as its testing framework. To run tests, simply type: 
-
-   ```bash
-   npm test
-   ```
-
 ## Usage
 
 - To use this project and its API, follow these steps:
@@ -185,7 +174,19 @@ To set up and run this project locally, follow these steps:
 
 > For any questions or issues, don't hesitate to reach out to the project maintainers. You can click [here](mailto:yhammani.student@gmail.com) to contact me through Gmail.
 
-## Scripts
+## Testing
+
+- The app uses Jest as its testing framework. To run tests, simply type: 
+
+   ```bash
+   npm test
+   ```
+
+## API Documentation
+
+For detailed information on the API endpoints and how to use them, please refer to our [API Documentation](documents/api-docs.md).
+
+## Script Documentation
 
 For detailed information on the scripts and how to use them, please refer to the [SCRIPT Documentation](documents/Script_Guide.md).
 

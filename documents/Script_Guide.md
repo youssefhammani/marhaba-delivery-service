@@ -1,4 +1,7 @@
-## Scripts
+# Script Documentation
+
+Welcome to the documentation for the *`Marhaba Delivery Service Bash Script`*. This document provides a comprehensive guide on how to use and interact with the Bash script. Please follow the guidelines below to make the most of this documentation.
+
 
 This document provides an overview of the scripts used in our project and their structure.
 
@@ -26,6 +29,39 @@ This document provides an overview of the scripts used in our project and their 
         ./bash/./generate-env-example.sh
         ```
 ***`Note:`*** If you encounter a permission error when trying to run the script, you can [click here](#making-thes-cript-executable) to fix it.
+
+---
+---
+
+### Node.js Scripts
+
+#### `initRoles.js`
+
+1. **Purpose :**
+
+   - This Node.js script is designed to insert predefined roles into a MongoDB database. It populates the database with default roles like 'Manager,' 'Client,' and 'Livreur.'
+
+2. **Usage :**
+
+   - Run the script using the following command:
+   
+        ```bash
+        node insert-roles.js
+        ```
+
+***`Note:`*** Ensure you have Node.js installed and configure your MongoDB connection details within the script.
+
+---
+---
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 #### ***Making the Script Executable***
 

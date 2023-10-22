@@ -31,12 +31,12 @@ This API requires user authentication via JSON Web Tokens (JWT). To access prote
 | Method | Endpoint                     | Description                       | Request Body           | Response                         | Access Control |
 | ------ | ---------------------------- | --------------------------------- | ---------------------- | -------------------------------- | -------------- |
 | GET    | `/api/users`                 | Get all registered users          | - None                 | - List of user profiles          | ***Private***  |
-| GET    | `/api/users/:id`             | Get specific user by ID           | - None                 | - User profile by ID             | ***Private***  |
-| POST   | `/api/users`                 | Add new user                      | - User details         | - Created user profile           | ***Admin***    |
-| PUT    | `/api/users/:id/update`      | Update profile information        | - Updated user details | - Updated user profile           | ***Private***  |
-| DELETE | `/api/users/:id/delete`      | Delete account                    | - None                 | - Deletion confirmation message  | ***Private***  |
-| PATCH  | `/api/users/:id/assign_role` | Assign role to an existing user   | - Role details         | - Updated user profile with role | ***Admin***    |
-| PATCH  | `/api/users/:id/revoke_role` | Revoke role from an existing user | - None                 | - Updated user profile           | ***Admin***    |
+| GET    | `/api/user/:id`              | Get specific user by ID           | - None                 | - User profile by ID             | ***Private***  |
+| POST   | `/api/user`                  | Add new user                      | - User details         | - Created user profile           | ***Admin***    |
+| PUT    | `/api/user/:id/update`       | Update profile information        | - Updated user details | - Updated user profile           | ***Private***  |
+| DELETE | `/api/user/:id/delete`       | Delete account                    | - None                 | - Deletion confirmation message  | ***Private***  |
+| PATCH  | `/api/user/:id/assign_role`  | Assign role to an existing user   | - Role details         | - Updated user profile with role | ***Admin***    |
+| PATCH  | `/api/user/:id/revoke_role`  | Revoke role from an existing user | - None                 | - Updated user profile           | ***Admin***    |
 
 ---
 ---
@@ -46,10 +46,10 @@ This API requires user authentication via JSON Web Tokens (JWT). To access prote
 | Method | Endpoint                | Description                   | Request Body           | Response                        | Access Control |
 | ------ | ----------------------- | ----------------------------- | ---------------------- | ------------------------------- | -------------- |
 | GET    | `/api/roles`            | Get all roles                 | - None                 | - List of roles                 | ***Private***  |
-| GET    | `/api/roles/:id`        | Get specific role by ID       | - None                 | - Role details by ID            | ***Private***  |
-| POST   | `/api/roles`            | Add new role                  | - Role details         | - Created role details          | ***Admin***    |
-| PATCH  | `/api/roles/:id/edit`   | Edit name of an existing role | - Updated role details | - Updated role details          | ***Admin***    |
-| DELETE | `/api/roles/:id/remove` | Remove an existing role       | - None                 | - Deletion confirmation message | ***Admin***    |
+| GET    | `/api/role/:id`         | Get specific role by ID       | - None                 | - Role details by ID            | ***Private***  |
+| POST   | `/api/role`             | Add new role                  | - Role details         | - Created role details          | ***Admin***    |
+| PATCH  | `/api/role/:id/edit`    | Edit name of an existing role | - Updated role details | - Updated role details          | ***Admin***    |
+| DELETE | `/api/role/:id/remove`  | Remove an existing role       | - None                 | - Deletion confirmation message | ***Admin***    |
 
 <!-- #### Orders
 

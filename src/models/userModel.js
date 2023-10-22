@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     },
     fullName: {
         type: String,
-        required: false,
+        // required: false,
     },
     dateOfBirth: {
         type: Date,
@@ -31,11 +31,20 @@ const userSchema = new mongoose.Schema({
         // enum: ['Manager', 'Client', 'manager', 'client', 'livreur'],
         // default: 'Client',
     },
+    isActivated: {
+        type: Boolean,
+        default: false,
+    },
+    // refreshToken: {
+    //     type: String,
+    //     default: "",
+    // },
     createdAt: {
         type: Date,
         default: Date.now,
     },
 });
+
 
 const User = mongoose.model('User', userSchema);
 
