@@ -21,12 +21,12 @@ server.on('error', (error) => {
   process.exit(1);
 });
 
-process.on('unhandledRejection', (err, promise) => {
-  console.error(`Unhandled Rejection: ${err.message}`);
-  server.close(() => promise.exit(1));
-});
+// process.on('unhandledRejection', (err, promise) => {
+//   console.error(`Unhandled Rejection: ${err.message}`);
+//   server.close(() => promise.exit(1));
+// });
 
-process.on('uncaughtException', (err) => {
-  console.error(`Uncaught Exception: ${err.message}`);
-  server.close(() => process.exit(1));
-});
+// process.on('uncaughtException', (err) => {
+//   console.error(`Uncaught Exception: ${err.message}`);
+//   server.close(() => process.exit(1));
+// });

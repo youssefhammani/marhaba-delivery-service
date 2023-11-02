@@ -108,25 +108,25 @@ should return an appropriate error.
 
 To set up and run this project locally, follow these steps:
 
-1. **Clone the repository:**
+1. **Clone the repository :**
 
    ```bash
    git clone https://github.com/youssefhammani/marhaba-delivery-service.git
    ```
 
-2. **Navigate to the project directory:**
+2. **Navigate to the project directory :**
 
    ```bash
    cd your-repo-name
    ```
 
-3. **Install dependencies:**
+3. **Install dependencies :**
 
    ```bash
    npm install
    ```
 
-4. **Set up environment variables:**
+4. **Set up environment variables :**
 
    - Create a `.env` file in the root of the project and add the required environment variables.
    - Fill it with necessary credentials for database connection, mail server configuration, etc.
@@ -140,13 +140,13 @@ To set up and run this project locally, follow these steps:
    
    - Make sure to replace the values with your specific configuration.
 
-5. **Start the development server:**
+5. **Start the development server :**
 
    ```bash
    npm start
    ```
 
-6. **Open Postman For Professional API Testing:**
+6. **Open Postman For Professional API Testing :**
 
    - Utilize [Postman](https://www.postman.com/) or a similar tool for professional API testing and interaction with the documented endpoints. [Click here](documents/api-docs.md) to access the documentation.
 
@@ -184,19 +184,19 @@ To set up and run this project locally, follow these steps:
 
 ## API Documentation
 
-For detailed information on the API endpoints and how to use them, please refer to our [API Documentation](documents/api-docs.md).
+* For detailed information on the API endpoints and how to use them, please refer to our [API Documentation](documents/api-docs.md).
 
 ## Script Documentation
 
-For detailed information on the scripts and how to use them, please refer to the [SCRIPT Documentation](documents/Script_Guide.md).
+* For detailed information on the scripts and how to use them, please refer to the [SCRIPT Documentation](documents/Script_Guide.md).
 
 ## Contributing
 
-Please follow the guidelines in [CONTRIBUTING.md](documents/CONTRIBUTING.md) to contribute to this project.
+* Please follow the guidelines in [CONTRIBUTING.md](documents/CONTRIBUTING.md) to contribute to this project.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](documents/LICENSE) file for details.
+* This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 

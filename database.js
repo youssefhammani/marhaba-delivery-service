@@ -9,7 +9,6 @@ mongoose.connect(uri, {
     useUnifiedTopology: true,
 });
 
-// Define your models here if needed
 
 const db = mongoose.connection;
 

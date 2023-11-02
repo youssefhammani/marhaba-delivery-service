@@ -9,11 +9,11 @@ class roleModel {
         },
     });
 
-    static Role = mongoose.model('Role', roleSchema);
+    static Role = mongoose.model('Role', roleModel.roleSchema);
 
     static getRole = async (req, res) => {
         try {
-            const role = await this.Role.findOne({ name: req.body.role });
+            const role = await roleModel.Role.findOne({ name: req.body.role });
 
             if (role) {
                 return role;
@@ -31,24 +31,26 @@ class roleModel {
         }
     }
 
-    static async createRole(req, res) {
+    static createRole = async (req, res) => {
         try {
-            const { name } = req.body;
+            const role = new roleModel.Role({
+                name: req.body.name,
+            });
 
-            const role = await Role.create({ name });
+            await role.save();
 
             return res.status(201).json({
-                message: 'Role was created successfully',
+                status: 'success',
+                message: 'Role created successfully',
                 data: role,
             });
-        } catch (err) {
-            console.error(err);
+        } catch (error) {
             return res.status(500).json({
                 status: 'error',
-                message: 'Role creation failed',
+                message: 'An error occurred while creating the role.',
             });
         }
-    }
+    };
 }
 
 module.exports = roleModel;

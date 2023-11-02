@@ -1,12 +1,12 @@
+const User = require('../models/userModel');
 const UserModel = require('../models/userModel');
 
 class UserController {
     static async activateEmail(req, res) {
         try {
-            const { email } = req.params;
-            const token = req.params.token;
+            const userId = req.decoded.userId
 
-            const user = await UserModel.findOne(email);
+            const user = await UserModel.findOne({ _id: userId });
 
             if (!user) {
                 return res.status(404).json({

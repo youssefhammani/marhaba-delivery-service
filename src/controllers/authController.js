@@ -1,17 +1,19 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
 const authUtils = require('../utils/authUtils');
+const roleModel = require('../models/roleModel');
+const PasswordUtils = require('../utils/passwordUtils');
 const { sendConfirmationEmail, emailTemplates, passwordResetTemplate } = require('../utils/emailUtils');
 const { generateAccessToken, generateRefreshToken } = require('../utils/generateToken');
+const { decode } = require('jsonwebtoken');
 
 const app = express();
 app.use(express.json());
 
+
 const register = async (req, res) => {
     try {
-        const { username, email, password, fullName, dateOfBirth, role } = req.body;
-        console.log(req.body);
+        const { username, email, password, fullName, dateOfBirth } = req.body;
 
         const existingUser = await User.findOne({ email });
 
@@ -19,7 +21,8 @@ const register = async (req, res) => {
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await PasswordUtils.hashPassword(password);
+        const role = await roleModel.getRole(req, res);
 
         const newUser = new User({
             username,
@@ -27,20 +30,14 @@ const register = async (req, res) => {
             password: hashedPassword,
             fullName,
             dateOfBirth,
-            role: role || 'Client',
+            role: role._id,
         });
-        console.log('hhh');
 
         await newUser.save();
 
-        console.log('pls');
-        const token = generateAccessToken(newUser._id);
-        // const token = jwt.sign({ userId: newUser._id }, config.jwt.secret, {
-        //     expiresIn: config.jwt.expiresIn,
-        // });
-        console.log("token", token);
-
-        sendConfirmationEmail(newUser.username, newUser.email, token, emailTemplates);
+        let token = generateAccessToken(newUser._id).replace(/\./g, '~');
+        const subject = "Welcome to Marhaba Delivery Service - Confirm Your Registration ✔";
+        sendConfirmationEmail(newUser.username, newUser.email, subject, token, emailTemplates);
 
         res.status(201).json({ message: 'User registered successfully please verify your email' });
     } catch (error) {
@@ -59,7 +56,7 @@ const login = async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        const passwordMatch = await bcrypt.compare(password, user.password);
+        const passwordMatch = await PasswordUtils.comparePassword(password, user.password);
 
         if (!passwordMatch) {
             return res.status(401).json({ message: 'Invalid credentials' });
@@ -67,9 +64,10 @@ const login = async (req, res) => {
 
         const accessToken = generateAccessToken(user._id);
 
-        if (!isActivated) {
+        if (!user.isActivated) {
             try {
-                sendConfirmationEmail(user.username, user.email, accessToken, emailTemplates);
+                const subject = "Welcome to Marhaba Delivery Service - Confirm Your Registration ✔";
+                sendConfirmationEmail(user.username, user.email, subject, accessToken, emailTemplates);
 
                 return res.status(400).json({
                     status: "error",
@@ -85,6 +83,15 @@ const login = async (req, res) => {
         }
 
         const refreshToken = generateRefreshToken(user._id);
+
+        res.cookie('access_token', accessToken, {
+            httpOnly: true,
+            maxAge: 24 * 60 * 60 * 1000, // 24 hours
+            sameSite: 'strict'
+        });
+        res.cookie('refresh_token', refreshToken, {
+            httpOnly: true,
+        });
 
         user.refreshToken = refreshToken;
         await user.save();
@@ -103,11 +110,11 @@ const login = async (req, res) => {
     }
 };
 
-const forgetPassword = async (req, res) => {
+const forgotPassword = async (req, res) => {
     try {
         const { email } = req.body;
 
-        const user = await user.findOne(email);
+        const user = await User.findOne({ email });
 
         if (!user) {
             return res.status(400).json({
@@ -116,8 +123,9 @@ const forgetPassword = async (req, res) => {
             });
         }
 
-        const resetToken = generateAccessToken(user._id);
-        sendConfirmationEmail(user.username, user.email, resetToken, passwordResetTemplate);
+        const resetToken = generateAccessToken(user._id).replace(/\./g, '~');
+        const subject = "Password Reset Request for Marhaba Delivery Service ✔";
+        sendConfirmationEmail(user.username, user.email, subject, resetToken, passwordResetTemplate);
 
         return res.status(201).json({
             status: "success",
@@ -135,19 +143,20 @@ const forgetPassword = async (req, res) => {
 
 const resetPassword = async (req, res) => {
     try {
-        const token = req.params.token;
-        const decoded = await authUtils.decodeToken(token);
+        const { newPassword, confirmPassword } = req.body;
+        const userId = req.decoded.userId
 
-        if (!decoded) {
-            return res.status(400).json({ status: 'error', message: 'Invalid or expired token' });
+        if (newPassword !== confirmPassword) {
+            return res.status(400).json({ status: 'error', message: 'Password is not match' });
         }
 
-        const user = await User.findOne(decoded._id);
+        const user = await User.findOne({ _id: userId });
+
         if (!user) {
             return res.status(400).json({ status: 'error', message: 'User not found' });
         }
 
-        const hashedPassword = await bcrypt.hash(req.body.new_pwr, 10);
+        const hashedPassword = await PasswordUtils.hashPassword(newPassword);
 
         user.password = hashedPassword;
         await user.save();
@@ -157,18 +166,17 @@ const resetPassword = async (req, res) => {
             message: 'Password reset successful',
         });
     } catch (err) {
-        console.error('Password reset error:', error);
+        console.error('Password reset error:', err);
         return res.status(500).json({
             status: 'error',
             message: 'Internal server error',
         });
     }
-
 }
 
 module.exports = {
     register,
     login,
-    forgetPassword,
+    forgotPassword,
     resetPassword,
 };

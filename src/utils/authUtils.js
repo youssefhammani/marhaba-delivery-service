@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken');
+const config = require('../../config/config');
 const UserModel = require('../models/userModel');
 
 class AuthUtils {
     static async verifyToken(req, res, next) {
         try {
-            const token = req.params.token || req.cookies._cks_ui;
+            const token = req.params.token || req.cookies.access_token;
             if (!token) {
                 return res.status(400).json({ status: 'error', message: 'Invalid token' });
             }
@@ -15,7 +16,7 @@ class AuthUtils {
                 return res.status(400).json({ status: 'error', message: 'Invalid token' });
             }
 
-            req.userData = decoded;
+            req.decoded = decoded;
             next();
         } catch (error) {
             return res.status(401).json({
@@ -27,7 +28,7 @@ class AuthUtils {
 
     static async decodeToken(userToken) {
         try {
-            const decoded = await jwt.verify(userToken, process.env.PRIVATEKEY);
+            const decoded = await jwt.verify(userToken, config.jwt.accessTokenSecret);
             return decoded;
         } catch (error) {
             console.error('JWT verification failed:', error);
